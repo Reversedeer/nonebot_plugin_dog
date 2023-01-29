@@ -37,7 +37,7 @@ _✨随机返回一局舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 
 ## 示例
 
-<img src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.jpg"/>
+<img width="300" src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.jpg"/>
 
 ## 安装方式
 
@@ -69,7 +69,7 @@ nb plugin install nonebot_plugin_dog
 <summary>git clone</summary>
 
 ```
-git clone https://github.com/Reversedeer/nonebot_piugin_dog.git
+git clone https://github.com/Reversedeer/nonebot_plugin_dog.git
 ```
 
 </details>
