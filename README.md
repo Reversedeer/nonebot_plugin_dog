@@ -37,14 +37,15 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 
 ## 安装方式
 
-nb-cli安装(推荐)
+### nb-cli安装(推荐)
 
 ```
 nb plugin install nonebot_plugin_dog
 ```
 
 <details>
-<summary>pip</summary>
+    <summary><h3>pip</h3></summary>
+
 
 ```
 pip install nonebot-plugin-dog
@@ -62,13 +63,30 @@ pip install nonebot-plugin-dog
 </details>
 
 <details>
-<summary>git clone</summary>
+    <summary><h3>git clone</h3></summary>
+
 
 ```
 git clone https://github.com/Reversedeer/nonebot_piugin_dog.git
 ```
 
 </details>
+
+### 更新
+
+```
+pip install --upgrade nonebot-plugin-dog
+```
+
+## 配置
+
+在bot目录对应的.env文件中添加（可选）
+
+|   config    | type | default |     example      |      usage      |
+| :---------: | :--: | :-----: | :--------------: | :-------------: |
+| dog_cd_time | int  |   20    | dog_cd_time = 20 | 调用api的默认值 |
+
+
 
 ## 示例
 
@@ -91,8 +109,8 @@ git clone https://github.com/Reversedeer/nonebot_piugin_dog.git
   - 增加cd限制  #2023-1-30
 - 0.1.0
   - 发布并优化代码  #2023-1-29
-</details>
 
+</details>
 
 ## 关于 ISSUE
 
