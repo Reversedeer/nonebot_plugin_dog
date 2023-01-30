@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="nonebot_plugin_dog",
-    version="0.1.0",
+    version="0.1.9",
     author="schwarzwald",
     description="Lick the dog diary! Lick the dog and lick to the last nothing.",
     long_description=long_description,
