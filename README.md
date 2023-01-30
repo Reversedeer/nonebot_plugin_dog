@@ -10,7 +10,7 @@
 
 # nonebot-plugin-dog
 
-_✨随机返回一局舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_  
+_✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_  
 
 </div>
 
@@ -35,10 +35,6 @@ _✨随机返回一局舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 
 当在群聊里发送“舔狗日记”命令时，bot会回复一句舔狗日记文案...
 
-## 示例
-
-<img width="300" src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.jpg"/>
-
 ## 安装方式
 
 nb-cli安装(推荐)
@@ -49,8 +45,6 @@ nb plugin install nonebot_plugin_dog
 
 <details>
 <summary>pip</summary>
-
-
     pip install nonebot-plugin-dog
 
 
@@ -69,10 +63,32 @@ nb plugin install nonebot_plugin_dog
 <summary>git clone</summary>
 
 ```
-git clone https://github.com/Reversedeer/nonebot_plugin_dog.git
+git clone https://github.com/Reversedeer/nonebot_piugin_dog.git
 ```
 
 </details>
+
+## 示例
+
+<img width="300 "src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.jpg"/><img width="300 "src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/main/image/image2.jpg"/>
+
+## TODO
+
+- [ ] 增加指令开关
+
+- [x] 增加CD限制
+- [ ] 增加图片渲染
+- [ ] 整合更多的API
+
+<details>
+    <summary><h2>更新日志</h2></summary>
+
+- 0.1.9
+  - 增加cd限制  #2023-1-30
+- 0.1.0
+  - 发布并优化代码  #2023-1-29
+
+
 
 ## 关于 ISSUE
 
