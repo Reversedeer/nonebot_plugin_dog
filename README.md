@@ -45,8 +45,10 @@ nb plugin install nonebot_plugin_dog
 
 <details>
 <summary>pip</summary>
-    pip install nonebot-plugin-dog
 
+```
+pip install nonebot-plugin-dog
+```
 
 打开 nonebot2 项目的 `bot.py` 文件, 在其中写入
 
@@ -70,7 +72,9 @@ git clone https://github.com/Reversedeer/nonebot_piugin_dog.git
 
 ## 示例
 
-<img width="300 "src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.jpg"/><img width="300 "src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/main/image/image2.jpg"/>
+<img width="300" src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.jpg">
+
+<img width="300 " src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/main/image/image2.jpg">
 
 ## TODO
 
