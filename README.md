@@ -91,7 +91,7 @@ git clone https://github.com/Reversedeer/nonebot_piugin_dog.git
   - 增加cd限制  #2023-1-30
 - 0.1.0
   - 发布并优化代码  #2023-1-29
-
+</details>
 
 
 ## 关于 ISSUE
