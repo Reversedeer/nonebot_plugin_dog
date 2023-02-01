@@ -33,7 +33,15 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 
 ## 介绍
 
-当在群聊里发送“舔狗日记”命令时，bot会回复一句舔狗日记文案...
+当在群聊里发送“舔狗日记”命令时，bot会回复一句舔狗日记文案......
+
+有可能需要加指令头 " / "，取决于你的command_start设置
+
+SUPERUSER | 群主 | 管理 可以使用：“开启/关闭文案”来控制指令开关（默认=true）
+
+群数据在/你的bot目录/Date/dog/下
+
+⚠️插件支持nonebot=>rc1
 
 ## 安装方式
 
@@ -58,7 +66,7 @@ pip install nonebot-plugin-dog
 
 在’pyproject.toml‘文件中写入
 
-    "nonebot_plugin_chatGPT_dog"
+    "nonebot_plugin_dog"
 
 </details>
 
@@ -96,19 +104,27 @@ pip install --upgrade nonebot-plugin-dog
 
 ## TODO
 
-- [ ] 增加指令开关
+- [x] 增加指令开关
 
 - [x] 增加CD限制
-- [ ] 增加图片渲染
+- [ ] 增加图片发送
 - [ ] 整合更多的API
+- [x] 修复文本末尾多出的空行[#issue1](https://github.com/Reversedeer/nonebot_plugin_dog/issues/1)
 
 <details>
     <summary><h2>更新日志</h2></summary>
 
-- 0.1.9
-  - 增加cd限制  #2023-1-30
-- 0.1.0
-  - 发布并优化代码  #2023-1-29
+- 0.2.2   #2023-2-1
+
+  - 修复文本末多出的空行
+  -  修复readme中的错误
+  - 增加指令开关
+  - 更改指令CD默认值为20
+
+- 0.1.9   #2023-1-30
+  - 增加cd限制  
+- 0.1.0   #2023-1-29
+  - 发布并优化代码   
 
 </details>
 
@@ -123,3 +139,9 @@ pip install --upgrade nonebot-plugin-dog
 
 > 请注意, 开发者并没有义务回复您的问题. 您应该具备基本的提问技巧。  
 > 有关如何提问，请阅读[《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
+
+
+
+## 其他插件
+
+[使用API的chatGPTQQ聊天机器人](https://github.com/Reversedeer/nonebot_plugin_chatGPT_openai)
