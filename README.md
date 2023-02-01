@@ -114,7 +114,7 @@ pip install --upgrade nonebot-plugin-dog
 <details>
     <summary><h2>更新日志</h2></summary>
 
-- 0.2.2   #2023-2-1
+- 0.2.3   #2023-2-1
 
   - 修复文本末多出的空行
   -  修复readme中的错误
