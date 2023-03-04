@@ -88,13 +88,13 @@ pip install --upgrade nonebot-plugin-dog
 
 ## 配置
 
-在bot目录对应的.env文件中添加（可选）
+在bot目录对应的.env文件中添加（有默认值）
 
-|   config    | type | default |     example      |      usage      |
-| :---------: | :--: | :-----: | :--------------: | :-------------: |
-| dog_cd_time | int  |   20    | dog_cd_time = 20 | 调用api的默认值 |
+| config  | type | default |     example      |              usage               |
+| :-----: | :--: | :-----: | :--------------: | :------------------------------: |
+| cd_time | int  |   20    | dog_cd_time = 20 | 调用api的默认值（设置0即为无cd） |
 
-
+这里的cd是全局设置，还没有单独添加每个api的cd，但api相互之间的cd是单独记录的
 
 ## 示例
 
@@ -108,19 +108,22 @@ pip install --upgrade nonebot-plugin-dog
 
 - [x] 增加CD限制
 - [ ] 增加图片发送
-- [ ] 整合更多的API
+- [x] 整合更多的API
 - [x] 修复文本末尾多出的空行[#issue1](https://github.com/Reversedeer/nonebot_plugin_dog/issues/1)
 
 <details>
     <summary><h2>更新日志</h2></summary>
 
-- 0.2.3   #2023-2-1
+- 0.2.5  #2023-3-3
 
+  - 添加了一些api
+  - 更改cd模式
+  
+- 0.2.3   #2023-2-1
   - 修复文本末多出的空行
   -  修复readme中的错误
   - 增加指令开关
   - 更改指令CD默认值为20
-
 - 0.1.9   #2023-1-30
   - 增加cd限制  
 - 0.1.0   #2023-1-29
