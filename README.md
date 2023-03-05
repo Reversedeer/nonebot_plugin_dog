@@ -33,13 +33,13 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 
 ## 介绍
 
-当在群聊里发送“舔狗日记”命令时，bot会回复一句舔狗日记文案......
+当在群聊里发送“舔狗日记/一言”（等）命令时，bot会回复一句舔狗日记/一言文案......（等）
 
 有可能需要加指令头 " / "，取决于你的command_start设置
 
 SUPERUSER | 群主 | 管理 可以使用：“开启/关闭文案”来控制指令开关（默认=true）
 
-群数据在/你的bot目录/Date/dog/下
+群数据在/bot目录/Date/dog/下
 
 ⚠️插件支持nonebot=>rc1
 
@@ -88,13 +88,14 @@ pip install --upgrade nonebot-plugin-dog
 
 ## 配置
 
-在bot目录对应的.env文件中添加（有默认值）
+在bot目录对应的.env.*文件中添加（有默认值，cd=0为不限制）
 
-| config  | type | default |     example      |              usage               |
-| :-----: | :--: | :-----: | :--------------: | :------------------------------: |
-| cd_time | int  |   20    | dog_cd_time = 20 | 调用api的默认值（设置0即为无cd） |
-
-这里的cd是全局设置，还没有单独添加每个api的cd，但api相互之间的cd是单独记录的
+|   config    | type | default |    example     |           usage            |
+| :---------: | :--: | :-----: | :------------: | :------------------------: |
+|   dog_cd    | int  |   20    |  dog_cd = 20   |  调用''舔狗日记'cd默认值   |
+|  laugh_cd   | int  |   20    |  laugh_cd=20   | 调用''讲个笑话''cd的默认值 |
+| hitokoto_cd | int  |   20    | hitokoto_cd=20 |    调用"一言"cd的默认值    |
+|  wenan_cd   | int  |   20    |  wenan_cd=20   |    调用“文案”cd的默认值    |
 
 ## 示例
 
@@ -114,11 +115,18 @@ pip install --upgrade nonebot-plugin-dog
 <details>
     <summary><h2>更新日志</h2></summary>
 
-- 0.2.5  #2023-3-3
+- 0.2.6  #2023-3-5
 
-  - 添加了一些api
-  - 更改cd模式
+  - 修复了文案中存在换行符，且无法换行的错误
   
+  - 优化cd逻辑，可以分别对应每一个指令
+  
+  - 整合了更多的api
+  
+- 0.2.5  #2023-3-3
+  - 整合了更多的api
+  - 优化cd模式
+
 - 0.2.3   #2023-2-1
   - 修复文本末多出的空行
   -  修复readme中的错误
