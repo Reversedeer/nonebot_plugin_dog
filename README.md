@@ -114,6 +114,9 @@ pip install --upgrade nonebot-plugin-dog
 
 <details>
     <summary><h2>更新日志</h2></summary>
+- 0.2.7  #2023-3-13
+
+  -更新api
 
 - 0.2.6  #2023-3-5
 
