@@ -48,7 +48,7 @@ async def dog(event: GroupMessageEvent, matcher: Matcher):     # 定义异步函
         try:
             # 使用 httpx.AsyncClient 获取 API，存储为 response 变量
             async with httpx.AsyncClient() as client:
-                response = await client.get("https://api.juncikeji.xyz/api/tgrj.php")
+                response = await client.get("https://api.mxycn.cn/api/tgrj.php")
                 response_text = response.text
         except Exception as error:
             await dog_matcher.finish(MessageSegment.text(str(error)))
@@ -76,7 +76,7 @@ async def laugh(event: GroupMessageEvent, matcher: Matcher):     # 定义异步�
         try:
             # 使用 httpx.AsyncClient 获取 API，存储为 response 变量
             async with httpx.AsyncClient() as client:
-                response = await client.get("https://api.juncikeji.xyz/api/qwxh.php")
+                response = await client.get("https://api.mxycn.cn/api/qwxh.php")
                 response_text = response.text
         except Exception as error:
             await laugh_matcher.finish(MessageSegment.text(str(error)))
@@ -142,7 +142,7 @@ async def wenan(event: GroupMessageEvent, matcher: Matcher):  # 定义异步函�
         try:
             # 使用 httpx.AsyncClient 获取 API，存储为 response 变量
             async with httpx.AsyncClient() as client:
-                response = await client.get("https://api.juncikeji.xyz/api/sgyl.php")
+                response = await client.get("https://api.mxycn.cn/api/sgyl.php")
                 response_text = response.text
         except Exception as error:
             await laugh_matcher.finish(MessageSegment.text(str(error)))
@@ -170,7 +170,6 @@ async def music(event: GroupMessageEvent, matcher: Matcher, msg: Message = Comma
     song_name = msg.extract_plain_text().strip()
     message = await music_search(api)
     await music_matcher.finish(message)
-
 async def music_search(api):
     async with httpx.AsyncClient() as client:
         response =(await client.get(api)).json()
