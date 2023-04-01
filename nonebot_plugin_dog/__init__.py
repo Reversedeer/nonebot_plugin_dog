@@ -1,10 +1,11 @@
+import re
 import httpx
 import nonebot
-import re
+import random
+import subprocess
 from re import I
 from nonebot.typing import T_State
 from nonebot.matcher import Matcher
-from nonebot.params import CommandArg
 from nonebot.permission import SUPERUSER
 from nonebot import on_command, on_regex
 from nonebot.adapters.onebot.v11.permission import GROUP_OWNER, GROUP_ADMIN
@@ -27,9 +28,23 @@ hitokoto_matcher = on_command("一言", aliases={"一言"},
 
 wenan_matcher = on_command("文案", aliases={"语录"},
                            priority=10, block=True)
+check = on_command("检查更新", priority=10, block=True)
 
-# music_matcher = on_command("点歌", aliases={"点歌"},
-#                           priority=10, block=True)
+@check.handle()
+async def check_update(matcher: Matcher):
+    async with httpx.AsyncClient() as client:
+        response = await client.get('https://pypi.org/pypi/nonebot-plugin-dog/json')
+        data = response.json()
+        latest_version = data['info']['version']
+        if current_version != latest_version:
+            await check.finish((f'======插件更新======\nnonebot-plugin-dog:\nVersion: {latest_version}'), block=False) 
+        subprocess.run(                                           # 使用 subprocess 模块执行 pip 命令，更新插件
+            ['pip', 'install', '--upgrade', 'nonebot-plugin-dog'])
+        if current_version != latest_version:
+            await check.finish((f"======插件更新======\nnonebot-plugin-dog: \n更新失败,请手动更新\n当前Version: {current_version}"), block = False)
+        else:
+            await check.finish((f'======插件更新======\nnonebot-plugin-dog: \n更新成功，当前Version：{current_version}'),block = False)
+
 
 @dog_matcher.handle()
 async def dog(event: GroupMessageEvent, matcher: Matcher):     # 定义异步函数 dog
@@ -45,10 +60,12 @@ async def dog(event: GroupMessageEvent, matcher: Matcher):     # 定义异步函
         or event.get_user_id() in nonebot.get_driver().config.superusers
     ):                                                                     # 记录cd
         dog_CD_dir.update({uid: event.time})
+        urls = ["https://api.mxycn.cn/api/tgrj.php", "https://api.oick.cn/dog/api.php"]
+        url = random.choice(urls)
         try:
             # 使用 httpx.AsyncClient 获取 API，存储为 response 变量
             async with httpx.AsyncClient() as client:
-                response = await client.get("https://api.mxycn.cn/api/tgrj.php")
+                response = await client.get(url)
                 response_text = response.text
         except Exception as error:
             await dog_matcher.finish(MessageSegment.text(str(error)))
@@ -151,38 +168,6 @@ async def wenan(event: GroupMessageEvent, matcher: Matcher):  # 定义异步函�
         await laugh_matcher.finish(
             MessageSegment.text(f"文案准备中喵，等待{wenan_cd - cd:.0f}秒后再找我喵~"),
             at_sender=True, block=True)
-'''
-@music_matcher.handle()
-async def music(event: GroupMessageEvent, matcher: Matcher, msg: Message = CommandArg()):  # 定义异步函数music
-    if not (await check_group_allow(str(event.group_id))):
-        await music_matcher.finish(notAllow, at_sender=True)
-    uid = event.get_user_id()                                            # 获取用户id
-    try:
-        cd = event.time - music_CD_dir[uid]                           # 计算cd
-    except KeyError:
-        cd = music_cd + 1                                           # 没有记录则cd为cd_time+1
-    if (
-        cd > music_cd
-        or event.get_user_id() in nonebot.get_driver().config.superusers
-    ):                                                                        # 记录cd
-        music_CD_dir.update({uid: event.time})
-    api = 'https://api.juncikeji.xyz/api/music.php?mode=list&type=json&song={song_name}'
-    song_name = msg.extract_plain_text().strip()
-    message = await music_search(api)
-    await music_matcher.finish(message)
-async def music_search(api):
-    async with httpx.AsyncClient() as client:
-        response =(await client.get(api)).json()
-        if response["code"] == 200:
-            id = (response["data"]["id"])
-            name = (response["date"]["name"])
-            singer = (response["data"]["singer"])
-            response = f"序号: {id}\n歌曲名称: {name}\n作曲家: {singer}"
-            return response
-        elif response["code"] == 400:
-            response = (response["msg"])
-            return response
-'''
 
 @openstats.handle()
 async def _(event: GroupMessageEvent, state: T_State):
