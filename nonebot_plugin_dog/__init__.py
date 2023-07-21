@@ -28,22 +28,22 @@ hitokoto_matcher = on_command("一言", aliases={"一言"},
 
 wenan_matcher = on_command("文案", aliases={"语录"},
                            priority=10, block=True)
-# check = on_command("检查更新", priority=10, block=True)
+check = on_command("检查更新", priority=10, block=True)
 
-# @check.handle()
-# async def check_update(matcher: Matcher):
-#     async with httpx.AsyncClient() as client:
-#         response = await client.get('https://pypi.org/pypi/nonebot-plugin-dog/json')
-#         data = response.json()
-#         latest_version = data['info']['version']
-#         if current_version != latest_version:
-#             await check.finish((f'======插件更新======\nnonebot-plugin-dog:\nVersion: {latest_version}'), block=False) 
-#         subprocess.run(                                           # 使用 subprocess 模块执行 pip 命令，更新插件
-#             ['pip', 'install', '--upgrade', 'nonebot-plugin-dog'])
-#         if current_version != latest_version:
-#             await check.finish((f"======插件更新======\nnonebot-plugin-dog: \n更新失败,请手动更新\n当前Version: {current_version}"), block = False)
-#         else:
-#             await check.finish((f'======插件更新======\nnonebot-plugin-dog: \n更新成功，当前Version：{current_version}'),block = False)
+@check.handle()
+async def check_update(matcher: Matcher):
+    async with httpx.AsyncClient() as client:
+        response = await client.get('https://pypi.org/pypi/nonebot-plugin-dog/json')
+        data = response.json()
+        latest_version = data['info']['version']
+        if current_version != latest_version:
+            await check.finish((f'======插件更新======\nnonebot-plugin-dog:\nVersion: {latest_version}'), block=False) 
+        subprocess.run(                                           # 使用 subprocess 模块执行 pip 命令，更新插件
+            ['pip', 'install', '--upgrade', 'nonebot-plugin-dog'])
+        if current_version != latest_version:
+            await check.finish((f"======插件更新======\nnonebot-plugin-dog: \n更新失败,请手动更新\n当前Version: {current_version}"), block = False)
+        else:
+            await check.finish((f'======插件更新======\nnonebot-plugin-dog: \n更新成功，当前Version：{current_version}'),block = False)
 
 
 @dog_matcher.handle()
