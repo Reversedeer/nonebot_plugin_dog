@@ -53,7 +53,6 @@ dog_CD_dir = {}  # 记录舔狗日记cd的字典
 laugh_CD_dir = {}  # 记录讲个笑话cd的字典
 hitokoto_CD_dir = {}  # 记录一言cd的字典
 wenan_CD_dir = {}  # 记录文案cd的字典
-#music_CD_dir = {}  # 记录点歌cd的字典
 notAllow = "群内还未开启文案功能, 请管理员或群主发送\"开启文案\", \"关闭文案\"以开启/关闭该功能"
 
 current_version = '0.2.7'
