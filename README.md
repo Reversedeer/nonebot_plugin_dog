@@ -41,7 +41,7 @@ SUPERUSER | 群主 | 管理 可以使用：“开启/关闭文案”来控制指
 
 群数据在/bot目录/Date/dog/下
 
-⚠️插件支持nonebot=>rc1
+⚠️插件支持手动检查更新：Command: "/检查更新"
 
 ## 安装方式
 
@@ -118,14 +118,21 @@ pip install --upgrade nonebot-plugin-dog
 
   -更新api
 
-- 0.2.6  #2023-3-5
+- 0.2.7.1
+  - 增加"舔狗日记"api
+  
+  - 插件支持~~自动/~~手动检测更新
+  
+- 0.2.7  # 2023-3-13
+  - 修复api
 
+- 0.2.6  #2023-3-5
   - 修复了文案中存在换行符，且无法换行的错误
-  
+
   - 优化cd逻辑，可以分别对应每一个指令
-  
+
   - 整合了更多的api
-  
+
 - 0.2.5  #2023-3-3
   - 整合了更多的api
   - 优化cd模式
@@ -158,4 +165,4 @@ pip install --upgrade nonebot-plugin-dog
 
 ## 其他插件
 
-[使用API的chatGPTQQ聊天机器人](https://github.com/Reversedeer/nonebot_plugin_chatGPT_openai)
+[QQ群消息，事件检测插件](https://github.com/Reversedeer/nonebot_plugin_eventmonitor)
