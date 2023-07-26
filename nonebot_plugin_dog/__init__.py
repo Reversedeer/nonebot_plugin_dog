@@ -3,19 +3,17 @@ import httpx
 import nonebot
 import random
 import subprocess
-from re import I
-from nonebot.typing import T_State
 from nonebot.matcher import Matcher
 from nonebot.permission import SUPERUSER
-from nonebot import on_command, on_regex
+from nonebot import on_command, on_endswith
+from nonebot.adapters.onebot.v11 import MessageSegment, GroupMessageEvent
 from nonebot.adapters.onebot.v11.permission import GROUP_OWNER, GROUP_ADMIN
-from nonebot.adapters.onebot.v11 import Message, MessageSegment, GroupMessageEvent
 
 from .utils import *
 
 
-openstats = on_regex(r"^(开启文案|关闭文案)", permission=SUPERUSER | GROUP_ADMIN | GROUP_OWNER,
-                     flags=I, priority=10, block=True)
+openstats = on_endswith("文案", permission=SUPERUSER | GROUP_ADMIN | GROUP_OWNER,
+                        priority=10, block=True)
 
 dog_matcher = on_command("舔狗日记", aliases={"舔狗嘤嘤嘤"},
                          priority=10, block=True)
@@ -170,12 +168,11 @@ async def wenan(event: GroupMessageEvent, matcher: Matcher):  # 定义异步函�
             at_sender=True, block=True)
 
 @openstats.handle()
-async def _(event: GroupMessageEvent, state: T_State):
+async def _(event: GroupMessageEvent):
     gid = str(event.group_id)  # 群号
     # 获取用户输入的参数
-    args = list(state["_matched_groups"])
-    command = args[0]
-    if "开启文案" in command:
+    command = event.message.extract_plain_text().replace("文案", "")
+    if "开启" == command:
         if gid in groupdata:
             groupdata[gid]["allow"] = True
             write_group_data()
@@ -184,7 +181,7 @@ async def _(event: GroupMessageEvent, state: T_State):
             groupdata.update({gid: {"allow": True}})
             write_group_data()
             await openstats.finish("功能已开启喵~")
-    elif "关闭文案" in command:
+    elif "关闭" == command:
         if gid in groupdata:
             groupdata[gid]["allow"] = False
             write_group_data()
@@ -193,3 +190,5 @@ async def _(event: GroupMessageEvent, state: T_State):
             groupdata.update({gid: {"allow": False}})
             write_group_data()
             await openstats.finish("功能已禁用喵~")
+    else:
+        return
