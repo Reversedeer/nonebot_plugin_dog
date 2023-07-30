@@ -99,9 +99,9 @@ pip install --upgrade nonebot-plugin-dog
 
 ## 示例
 
-<img width="300" src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.jpg">
+<img width="300" src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.png">
 
-<img width="300 " src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/main/image/image2.jpg">
+<img width="300 " src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/main/image/image2.png">
 
 ## TODO
 
@@ -114,37 +114,37 @@ pip install --upgrade nonebot-plugin-dog
 
 <details>
     <summary><h2>更新日志</h2></summary>
-- 0.2.7  #2023-3-13
-
-  -更新api
+  
+- 0.2.8 
+  - 插件支持~~自动/~~手动检测更新(未完成)
 
 - 0.2.7.1
   - 增加"舔狗日记"api
   
-  - 插件支持~~自动/~~手动检测更新
+  - 插件支持~~自动/~~手动检测更新(未完成)
   
-- 0.2.7  # 2023-3-13
+- 0.2.7
   - 修复api
 
-- 0.2.6  #2023-3-5
+- 0.2.6
   - 修复了文案中存在换行符，且无法换行的错误
 
   - 优化cd逻辑，可以分别对应每一个指令
 
   - 整合了更多的api
 
-- 0.2.5  #2023-3-3
+- 0.2.5 
   - 整合了更多的api
   - 优化cd模式
 
-- 0.2.3   #2023-2-1
+- 0.2.3
   - 修复文本末多出的空行
   -  修复readme中的错误
   - 增加指令开关
   - 更改指令CD默认值为20
-- 0.1.9   #2023-1-30
+- 0.1.9
   - 增加cd限制  
-- 0.1.0   #2023-1-29
+- 0.1.0 
   - 发布并优化代码   
 
 </details>
