@@ -2,6 +2,15 @@ import os
 import json
 import nonebot
 
+
+
+dog_CD_dir = {}  # 记录舔狗日记cd的字典
+laugh_CD_dir = {}  # 记录讲个笑话cd的字典
+hitokoto_CD_dir = {}  # 记录一言cd的字典
+wenan_CD_dir = {}  # 记录文案cd的字典
+current_version = '0.2.6'
+
+
 if os.path.exists("data/dog/groupdata.json"):  # 读取用户数据
     with open("data/dog/groupdata.json", "r", encoding="utf-8") as f:
         groupdata = json.load(f)
@@ -15,6 +24,7 @@ async def check_group_allow(gid: str) -> bool:
     if gid not in groupdata:
         groupdata[gid] = {"allow": True}# 写入默认值为true
     return groupdata[gid]["allow"]
+
 
 def write_group_data() -> None:
     #写入群配置
@@ -42,15 +52,9 @@ try:
 except:
     wenan_cd = 20      		# cd默认值
 
-dog_CD_dir = {}  # 记录舔狗日记cd的字典
-laugh_CD_dir = {}  # 记录讲个笑话cd的字典
-hitokoto_CD_dir = {}  # 记录一言cd的字典
-wenan_CD_dir = {}  # 记录文案cd的字典
-
-
 notAllow = "群内还未开启文案功能, 请管理员或群主发送\"开启文案\", \"关闭文案\"以开启/关闭该功能"
 
-current_version = '0.2.7'
+
 class Utils:
     usage = """
     指令1：/舔狗日记

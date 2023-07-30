@@ -1,61 +1,62 @@
 import re
 import httpx
-import nonebot
 import random
+import nonebot
+import platform
 import contextlib
 
-from re import I
-from nonebot.params import ArgStr
-from nonebot.typing import T_State
+from nonebot.log import logger
 from nonebot.matcher import Matcher
+from nonebot.params import ArgStr
 from nonebot.permission import SUPERUSER
-from nonebot import on_command, on_regex
+from nonebot import on_command, on_endswith
+from nonebot.adapters.onebot.v11 import MessageEvent, MessageSegment, GroupMessageEvent, Bot
 from nonebot.adapters.onebot.v11.permission import GROUP_OWNER, GROUP_ADMIN
-from nonebot.adapters.onebot.v11 import MessageSegment, GroupMessageEvent
 
 from .utils import *
+from .update import release_url
+from .check import check_update
 
 
-openstats = on_regex(
-    r"^(开启文案|关闭文案)",
+openstats = on_endswith(
+    "文案",
     permission=SUPERUSER | GROUP_ADMIN | GROUP_OWNER,
-    flags=I,
     priority=1,
     block=True
-    )
+)
 
 dog_matcher = on_command(
     "舔狗日记",
     aliases={"舔狗嘤嘤嘤"},
     priority=10,
     block=True
-    )
+)
 
 laugh_matcher = on_command(
     "讲个笑话",
     aliases={"说个笑话"},
     priority=10,
     block=True
-    )
+)
 
 hitokoto_matcher = on_command(
     "一言",aliases={"一言"},
     priority=10,
     block=True
-    )
+)
 
 wenan_matcher = on_command(
     "文案",
     aliases={"语录"},
     priority=10,
     block=True
-    )
-check = on_command(
+)
+check_up = on_command(
     "检查更新",
     priority=1,
     permission=SUPERUSER,
     block=True
-    )
+)
 
 restart = on_command(
     "重启",
@@ -63,7 +64,8 @@ restart = on_command(
     priority=1,
     permission=SUPERUSER,
     block=True
-    )
+)
+
 
 @dog_matcher.handle()
 async def dog(event: GroupMessageEvent, matcher: Matcher):     # 定义异步函数 dog
@@ -93,7 +95,6 @@ async def dog(event: GroupMessageEvent, matcher: Matcher):     # 定义异步函
         await dog_matcher.finish(
             MessageSegment.text(f"不要深情了喵，休息{dog_cd - cd:.0f}秒后再找我喵~"),
             at_sender=True, block=True)
-
 
 @laugh_matcher.handle()
 async def laugh(event: GroupMessageEvent, matcher: Matcher):     # 定义异步函数 laugh
@@ -191,59 +192,60 @@ async def wenan(event: GroupMessageEvent, matcher: Matcher):  # 定义异步函�
             at_sender=True, block=True)
 
 @openstats.handle()
-async def _(event: GroupMessageEvent, state: T_State):
+async def _(event: GroupMessageEvent):
     gid = str(event.group_id)  # 群号
     # 获取用户输入的参数
-    args = list(state["_matched_groups"])
-    command = args[0]
-    if "开启文案" in command:
+    command = event.message.extract_plain_text().replace("文案", "")
+    if command == "开启":
         if gid in groupdata:
             groupdata[gid]["allow"] = True
         else:
             groupdata.update({gid: {"allow": True}})
         write_group_data()
         await openstats.finish("功能已开启喵~")
-    elif "关闭文案" in command:
+    elif "关闭" in command:
         if gid in groupdata:
             groupdata[gid]["allow"] = False
         else:
             groupdata.update({gid: {"allow": False}})
         write_group_data()
         await openstats.finish("功能已禁用喵~")
+    else:
+        return
 
-@check.handle()
-async def check_update():
-    async with httpx.AsyncClient() as client:
-        response = await client.get('https://pypi.org/pypi/nonebot-plugin-dog/json')
-        data = response.json()
-        latest_version = data['info']['version']
-        if current_version != latest_version:
-            await check.finish((f'=======插件更新=======\nnonebot-plugin-dog\n当前Version: {current_version}\n最新Version: {latest_version}\n======插件可更新======'), block = False)
-        else:
-            await check.finish((f'=======插件更新=======\nnonebot-plugin-dog\n当前Version：{latest_version}\n======插件已最新======'), block=False)
+@check_up.handle()
+async def _(bot: Bot, event: MessageEvent):
+    try:
+        code, error = await check_update(bot)
+        if error:
+            logger.error(f"错误: {error}", "插件检查更新")
+            await bot.send_private_msg(
+                user_id=event.user_id, message=f"更新插件dog未知错误 {error}"
+            )
+    except Exception as e:
+        logger.error("更新插件dog未知错误", "检查更新真寻", e=e)
+        await bot.send_private_msg(
+            user_id=event.user_id,
+            message=f"更新插件dog未知错误 {type(e)}: {e}",
+        )
+    else:
+        if code == 200:
+            await bot.send_private_msg(user_id=event.user_id, message="更新完毕，请重启真寻....")
 
 @restart.got("flag", prompt="确定是否重启？确定请回复[是|好|确定]（重启失败咱们将失去联系，请谨慎！）")
 async def _(flag: str = ArgStr("flag")):
     if flag.lower() in {"true", "是", "好", "确定", "确定是"}:
         await restart.send("开始重启..请稍等...")
-        open("new_version", "w")
-        os.system("./restart.sh")
+        open("data/dog/new_version", "w")
+        if str(platform.system()).lower() == "windows":
+            import sys
+
+            python = sys.executable
+            os.execl(python, python, *sys.argv)
+        else:
+            os.system("./restart.sh")
     else:
         await restart.send("已取消操作...")
-@restart.handle()
-async def _():
-        await restart.send("开始重启..请稍等...")
-        open("new_version", "w")
-        os.system("./restart.sh")
-
-@restart.got("flag", prompt="确定是否重启？确定请回复[是|好|确定]（重启失败咱们将失去联系，请谨慎！）")
-async def _(matcher: Matcher, flag: str = ArgStr("flag")):
-    if flag.lower() in {"true", "是", "好", "确定", "确定是"}:
-        await matcher.send("开始重启..请稍等...")
-        open("new_version", "w")
-        os.system("./restart.sh")
-    else:
-        await matcher.send("已取消操作...")
 
 
 with contextlib.suppress(Exception):
