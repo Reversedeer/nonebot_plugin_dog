@@ -99,9 +99,9 @@ pip install --upgrade nonebot-plugin-dog
 
 ## 示例
 
-<img width="300" src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.png">
+<img width="300" src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/dev/image/image.png">
 
-<img width="300 " src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/main/image/image2.png">
+<img width="300 " src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/dev/image/image2.png">
 
 ## TODO
 
