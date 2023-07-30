@@ -99,9 +99,9 @@ pip install --upgrade nonebot-plugin-dog
 
 ## 示例
 
-<img width="300" src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/dev/image/image.png">
+<img width="100%" src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/dev/image/image.png">
 
-<img width="300 " src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/dev/image/image2.png">
+<img width="100%" src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/dev/image/image2.png">
 
 ## TODO
 
@@ -114,7 +114,7 @@ pip install --upgrade nonebot-plugin-dog
 
 <details>
     <summary><h2>更新日志</h2></summary>
-  
+
 - 0.2.8 
   - 插件支持~~自动/~~手动检测更新(未完成)
 
