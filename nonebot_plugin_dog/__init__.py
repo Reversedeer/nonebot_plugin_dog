@@ -14,7 +14,6 @@ from nonebot.adapters.onebot.v11 import MessageEvent, MessageSegment, GroupMessa
 from nonebot.adapters.onebot.v11.permission import GROUP_OWNER, GROUP_ADMIN
 
 from .utils import *
-from .update import release_url
 from .check import check_update
 
 
