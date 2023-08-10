@@ -7,7 +7,7 @@ from nonebot.adapters.onebot.v11 import Bot, Message
 
 from .update import *
 from .utils import *
-# from .http_utils import AsyncHttpx
+
 
 async def fetch_data(tar_gz_url):
     async with httpx.AsyncClient() as client:
@@ -26,6 +26,7 @@ async def download_file(tar_gz_url, latest_tar_gz):
 
 
 async def check_update(bot: Bot):
+    global latest_version
     logger.info("开始更新插件...")
     data = await get_latest_version_data()
     if data:
@@ -73,62 +74,71 @@ async def check_update(bot: Bot):
 
 
 async def _file_handle(latest_version: str) -> str:
+    # 接收最新版本号作为参数，并返回处理结果字符串
+    
     if not temp_dir.exists():
+        # 检查临时目录是否存在，如果不存在则创建
         temp_dir.mkdir(exist_ok=True, parents=True)
+    
     if backup_dir.exists():
+        # 如果备份目录存在，则删除整个备份目录
         shutil.rmtree(backup_dir)
+    
     tf = None
+    # 初始化一个tarfile对象tf
+    
     backup_dir.mkdir(exist_ok=True, parents=True)
-    logger.info("开始解压真寻文件压缩包....")
+    # 创建备份目录，如果备份目录已存在，则不会重新创建
+    
+    logger.info("开始解压文件压缩包....")
+    # 记录日志，表示开始解压文件压缩包
     tf = tarfile.open(latest_tar_gz)
+    # 打开文件压缩包，获取tarfile对象tf
     tf.extractall(temp_dir)
-    logger.info("解压真寻文件压缩包完成....")
+    # 将压缩包中的所有文件解压到临时目录temp_dir中
+    logger.info("解压文件压缩包完成....")
+    # 记录日志，表示解压文件压缩包完成
+    
     latest_file = Path(temp_dir) / os.listdir(temp_dir)[0]
+    # 获取临时目录中的第一个文件，作为最新版本的文件夹路径
+    
     update_info_file = Path(latest_file) / os.listdir(latest_file)[1]
-    update_info = json.load(open(update_info_file, "r", encoding="utf8"))
-    update_file = update_info["update_file"]
-    add_file = update_info["add_file"]
-    delete_file = update_info["delete_file"]
-    config_file = config_path / "configs" / "config.py"
-    config_path_file = config_path / "configs" / "path_config.py"
+    # 获取最新版本文件夹中的第二个文件，作为更新信息文件的路径
+    try:
+        for file in os.listdir(destination_directory):
+            logger.info("正在备份插件目录...")
+            temp_file = os.path.join(destination_directory, file)
+            backup_file = os.path.join(backup_dir, file)
+            shutil.copy2(temp_file, backup_file)
+            logger.info("文件备份成功")
 
-    for file in delete_file + update_file:
-        if file != "configs":
-            file = Path() / file
-            backup_file = Path(backup_dir) / file
-            if file.exists():
-                backup_file.parent.mkdir(parents=True, exist_ok=True)
-                if backup_file.exists():
-                    backup_file.unlink()
-                if file not in [config_file, config_path_file]:
-                    shutil.move(file.absolute(), backup_file.absolute())
-                else:
-                    with open(file, "r", encoding="utf8") as rf:
-                        data = rf.read()
-                    with open(backup_file, "w", encoding="utf8") as wf:
-                        wf.write(data)
-                logger.info(f"已备份文件：{file}")
-    for file in add_file + update_file:
-        new_file = Path(latest_file) / file
-        old_file = Path() / file
-        if (
-            old_file not in [config_file, config_path_file]
-            and file != "configs"
-            and not old_file.exists()
-            and new_file.exists()
-        ):
-            shutil.move(new_file.absolute(), old_file.absolute())
-            logger.info(f"已更新文件：{file}")
+        
+        for file in os.listdir(update_info_file):
+            logger.info("开始更新插件...")
+            updata_file = os.path.join(update_info_file, file)
+            destination_file = os.path.join(destination_directory, file)
+            shutil.copy2(updata_file, destination_file)
+            logger.info("插件更新成功!")
+    except Exception as e:
+        raise e
+
     if tf:
         tf.close()
+        # 关闭tarfile对象，释放资源
     if temp_dir.exists():
         shutil.rmtree(temp_dir)
+        # 删除临时目录及其中的所有文件
     if latest_tar_gz.exists():
         latest_tar_gz.unlink()
-    local_update_info_file = Path() / "update_info.json"
-    if local_update_info_file.exists():
-        local_update_info_file.unlink()
+        # 删除最新版本的压缩包文件
+
     with open(version_file, "w", encoding="utf-8") as f:
         f.write(f"{latest_version}")
-    os.system(f"poetry run pip install -r {(Path() / 'pyproject.toml').absolute()}")
+        # 将最新版本号写入版本文件中
+
+    #os.system(f"poetry run pip install -r {(update_info_file / 'pyproject.toml').absolute()}")
+    # 使用os.system命令执行shell命令，安装更新后的依赖包
+
     return ""
+    # 返回一个空字符串
+
