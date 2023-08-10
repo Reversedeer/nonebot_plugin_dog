@@ -17,7 +17,8 @@ config_path = Path() / "data/dog"
 latest_tar_gz = config_path / "latest_file.tar.gz"
 temp_dir = config_path / "temp"
 backup_dir = config_path / "backup"
-version_file = config_path / "__version__"
+version_file: Path = config_path / "new_version"
+destination_directory = 'src/plugins/nonebot_plugin_dog'  # 目标文件夹
 
 @driver.on_bot_connect
 async def remind(bot: Bot):
@@ -38,7 +39,7 @@ async def remind(bot: Bot):
                  )
             os.system("chmod +x ./restart.sh")
             logger.info("已自动生成 restart.sh(重启) 文件，请检查脚本是否与本地指令符合...")
-        Version = config_path / "new_version"
+        Version = version_file
         if Version.exists():
             await bot.send_private_msg(
                user_id=int(list(bot.config.superusers)[0]),
