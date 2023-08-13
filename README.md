@@ -30,19 +30,6 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 
 
 
-
-## 介绍
-
-当在群聊里发送“舔狗日记/一言”（等）命令时，bot会回复一句舔狗日记/一言文案......（等）
-
-有可能需要加指令头 " / "，取决于你的command_start设置
-
-SUPERUSER | 群主 | 管理 可以使用：“开启/关闭文案”来控制指令开关（默认=true）
-
-群数据在/bot目录/Date/dog/下
-
-⚠️插件支持nonebot=>rc1
-
 ## 安装方式
 
 ### nb-cli安装(推荐)
@@ -112,19 +99,6 @@ pip install --upgrade nonebot-plugin-dog
 - [x] 整合更多的API
 - [x] 修复文本末尾多出的空行[#issue1](https://github.com/Reversedeer/nonebot_plugin_dog/issues/1)
 
-<details>
-    <summary><h2>更新日志</h2></summary>
-- 0.2.7  #2023-3-13
-
-  -更新api
-
-- 0.2.6  #2023-3-5
-
-  - 修复了文案中存在换行符，且无法换行的错误
-  
-  - 优化cd逻辑，可以分别对应每一个指令
-  
-  - 整合了更多的api
   
 - 0.2.5  #2023-3-3
   - 整合了更多的api
@@ -153,9 +127,3 @@ pip install --upgrade nonebot-plugin-dog
 
 > 请注意, 开发者并没有义务回复您的问题. 您应该具备基本的提问技巧。  
 > 有关如何提问，请阅读[《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
-
-
-
-## 其他插件
-
-[使用API的chatGPTQQ聊天机器人](https://github.com/Reversedeer/nonebot_plugin_chatGPT_openai)
