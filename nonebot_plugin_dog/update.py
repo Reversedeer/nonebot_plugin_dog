@@ -17,7 +17,7 @@ config_path = Path() / "data/dog"
 latest_tar_gz = config_path / "latest_file.tar.gz"
 temp_dir = config_path / "temp"
 backup_dir = config_path / "backup"
-version_file: Path = config_path / "new_version"
+version_file = config_path / "new_version"
 destination_directory = 'src/plugins/nonebot_plugin_dog'  # 目标文件夹
 
 @driver.on_bot_connect
@@ -58,5 +58,5 @@ async def get_latest_version_data() -> dict:
         except TimeoutError:
             pass
         except Exception as e:
-            logger.error("检查更新版本失败")
+            logger.error("检查最新版本失败")
     return {}

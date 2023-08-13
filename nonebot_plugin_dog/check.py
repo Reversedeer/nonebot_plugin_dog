@@ -33,10 +33,10 @@ async def check_update(bot: Bot):
         latest_version = data["name"]
         if current_version != latest_version:
             tar_gz_url = data["tarball_url"]
-            logger.info(f"检测插件有更新，当前版本：{current_version}，最新版本：{latest_version}")
+            logger.info(f"检测插件dog:有更新，当前版本：{current_version}，最新版本：{latest_version}")
             await bot.send_private_msg(
                 user_id=int(list(bot.config.superusers)[0]),
-                message=f"检测插件有更新，当前版本：{current_version}，最新版本：{latest_version}\n" f"开始更新.....",
+                message=f"检测插件:dog有更新，当前版本：{current_version}，最新版本：{latest_version}\n" f"开始更新.....",
             )
             tar_gz_url = (await fetch_data(tar_gz_url)).headers.get("Location")
             if await download_file(tar_gz_url, latest_tar_gz):
@@ -49,15 +49,15 @@ async def check_update(bot: Bot):
                     user_id=int(list(bot.config.superusers)[0]),
                     message=Message(
                             f"插件更新完成，版本：{current_version} -> {latest_version}\n"
-                            f"更新日期：{data['created_at']}\n"
+                            f"插件更新日期：{data['created_at']}\n"
                     ),
                 )
                 return 200, ""
             else:
-                logger.warning(f"下载最新版本失败...版本号：{latest_version}")
+                logger.warning(f"下载最新版本失败..请检查网络是否通畅.版本号：{latest_version}")
                 await bot.send_private_msg(
                     user_id=int(list(bot.config.superusers)[0]),
-                    message=f"下载最新版本失败qwq...版本号：{latest_version}",
+                    message=f"下载最新版本失败qwq..请检查网络是否通畅.版本号：{latest_version}",
                 )
         else:
             logger.info(f"自动获取版本成功：{latest_version}，当前版本为最新版，无需更新...")
@@ -101,8 +101,9 @@ async def _file_handle(latest_version: str) -> str:
     
     latest_file = Path(temp_dir) / os.listdir(temp_dir)[0]
     # 获取临时目录中的第一个文件，作为最新版本的文件夹路径
-    
-    update_info_file = Path(latest_file) / os.listdir(latest_file)[1]
+    print(latest_file)
+    update_info_file = Path(latest_file) / os.listdir(latest_file)[0]
+    print(update_info_file)
     # 获取最新版本文件夹中的第二个文件，作为更新信息文件的路径
     try:
         for file in os.listdir(destination_directory):
@@ -136,7 +137,7 @@ async def _file_handle(latest_version: str) -> str:
         f.write(f"{latest_version}")
         # 将最新版本号写入版本文件中
 
-    #os.system(f"poetry run pip install -r {(update_info_file / 'pyproject.toml').absolute()}")
+    os.system(f"poetry run pip install -r {(update_info_file / 'pyproject.toml').absolute()}")
     # 使用os.system命令执行shell命令，安装更新后的依赖包
 
     return ""

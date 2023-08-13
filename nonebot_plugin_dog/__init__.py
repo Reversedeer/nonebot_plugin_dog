@@ -219,17 +219,17 @@ async def _(bot: Bot, event: MessageEvent):
         if error:
             logger.error(f"错误: {error}", "插件检查更新")
             await bot.send_private_msg(
-                user_id=event.user_id, message=f"更新插件dog未知错误 {error}"
+                user_id=event.user_id, message=f"更新插件dog更新时发生未知错误 {error}"
             )
     except Exception as e:
-        logger.error("更新插件dog未知错误", "检查更新真寻", e=e)
+        logger.error("更新插件dog时发生未知错误", "检查更新", e=e)
         await bot.send_private_msg(
             user_id=event.user_id,
-            message=f"更新插件dog未知错误 {type(e)}: {e}",
+            message=f"更新插件dog时发生未知错误 {type(e)}: {e}",
         )
     else:
         if code == 200:
-            await bot.send_private_msg(user_id=event.user_id, message="更新完毕，请重启真寻....")
+            await bot.send_private_msg(user_id=event.user_id, message="更新完毕，请重启bot....")
 
 @restart.got("flag", prompt="确定是否重启？确定请回复[是|好|确定]（重启失败咱们将失去联系，请谨慎！）")
 async def _(flag: str = ArgStr("flag")):
