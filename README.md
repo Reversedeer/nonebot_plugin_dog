@@ -30,6 +30,19 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 
 
 
+
+## 介绍
+
+> 在群聊里发送“舔狗日记/一言”（等）命令时，bot返回一句舔狗日记/一言等文案
+>
+> 你可能需要在env里配置指令响应头 " / "，取决于你的command_start设置
+>
+> SUPERUSER | 群主 | 管理 可以使用：“开启/关闭文案”来控制指令开关（默认=true）
+>
+> 插件所有配置文件和备份目录在/date/dog/下
+>
+> ⚠️插件支持手动检查更新：Command: "/检查更新"，如果没有报错，发送: "/重启"完成bot更新，可不再使用pip install --upgrade 更新
+
 ## 安装方式
 
 ### nb-cli安装(推荐)
@@ -46,25 +59,6 @@ nb plugin install nonebot_plugin_dog
 pip install nonebot-plugin-dog
 ```
 
-打开 nonebot2 项目的 `bot.py` 文件, 在其中写入
-
-
-    nonebot.load_plugin("nonebot_plugin_dog")
-
-在’pyproject.toml‘文件中写入
-
-    "nonebot_plugin_dog"
-
-</details>
-
-<details>
-    <summary><h3>git clone</h3></summary>
-
-
-```
-git clone https://github.com/Reversedeer/nonebot_piugin_dog.git
-```
-
 </details>
 
 ### 更新
@@ -72,6 +66,8 @@ git clone https://github.com/Reversedeer/nonebot_piugin_dog.git
 ```
 pip install --upgrade nonebot-plugin-dog
 ```
+
+#### 还可以在群内发送指令："/检查更新"来检查更新;  发送  "/重启"完成bot更新
 
 ## 配置
 
@@ -99,11 +95,27 @@ pip install --upgrade nonebot-plugin-dog
 - [x] 整合更多的API
 - [x] 修复文本末尾多出的空行[#issue1](https://github.com/Reversedeer/nonebot_plugin_dog/issues/1)
 
-  
+<details>
+    <summary><h2>更新日志</h2></summary>
+
+- 0.2.8
+  - 实现插件热更新
+
+- 0.2.7.1
+  - 增加"舔狗日记"api
+
+  - 插件支持手动检测更新
+- 0.2.7  # 2023-3-13
+  - 修复api
+- 0.2.6  #2023-3-5
+  - 修复了文案中存在换行符，且无法换行的错误
+
+  - 优化cd逻辑，可以分别对应每一个指令
+
+  - 整合了更多的api
 - 0.2.5  #2023-3-3
   - 整合了更多的api
   - 优化cd模式
-
 - 0.2.3   #2023-2-1
   - 修复文本末多出的空行
   -  修复readme中的错误
@@ -127,3 +139,9 @@ pip install --upgrade nonebot-plugin-dog
 
 > 请注意, 开发者并没有义务回复您的问题. 您应该具备基本的提问技巧。  
 > 有关如何提问，请阅读[《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)
+
+
+
+## 其他插件
+
+[QQ群消息，事件检测插件](https://github.com/Reversedeer/nonebot_plugin_eventmonitor)
