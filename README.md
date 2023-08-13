@@ -33,15 +33,15 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 
 ## 介绍
 
-当在群聊里发送“舔狗日记/一言”（等）命令时，bot会回复一句舔狗日记/一言文案......（等）
-
-有可能需要加指令头 " / "，取决于你的command_start设置
-
-SUPERUSER | 群主 | 管理 可以使用：“开启/关闭文案”来控制指令开关（默认=true）
-
-群数据在/bot目录/Date/dog/下
-
-⚠️插件支持手动检查更新：Command: "/检查更新"
+> 在群聊里发送“舔狗日记/一言”（等）命令时，bot返回一句舔狗日记/一言等文案
+>
+> 你可能需要在env里配置指令响应头 " / "，取决于你的command_start设置
+>
+> SUPERUSER | 群主 | 管理 可以使用：“开启/关闭文案”来控制指令开关（默认=true）
+>
+> 插件所有配置文件和备份目录在/date/dog/下
+>
+> ⚠️插件支持手动检查更新：Command: "/检查更新"，如果没有报错，发送: "/重启"完成bot更新，可不再使用pip install --upgrade 更新
 
 ## 安装方式
 
@@ -59,15 +59,6 @@ nb plugin install nonebot_plugin_dog
 pip install nonebot-plugin-dog
 ```
 
-打开 nonebot2 项目的 `bot.py` 文件, 在其中写入
-
-
-    nonebot.load_plugin("nonebot_plugin_dog")
-
-在’pyproject.toml‘文件中写入
-
-    "nonebot_plugin_dog"
-
 </details>
 
 ### 更新
@@ -75,6 +66,8 @@ pip install nonebot-plugin-dog
 ```
 pip install --upgrade nonebot-plugin-dog
 ```
+
+#### 还可以在群内发送指令："/检查更新"来检查更新;  发送  "/重启"完成bot更新
 
 ## 配置
 
@@ -104,29 +97,25 @@ pip install --upgrade nonebot-plugin-dog
 
 <details>
     <summary><h2>更新日志</h2></summary>
-- 0.2.7  #2023-3-13
 
-  -更新api
+- 0.2.8
+  - 实现插件热更新
 
 - 0.2.7.1
   - 增加"舔狗日记"api
-  
-  - 插件支持~~自动/~~手动检测更新
-  
+
+  - 插件支持手动检测更新
 - 0.2.7  # 2023-3-13
   - 修复api
-
 - 0.2.6  #2023-3-5
   - 修复了文案中存在换行符，且无法换行的错误
 
   - 优化cd逻辑，可以分别对应每一个指令
 
   - 整合了更多的api
-
 - 0.2.5  #2023-3-3
   - 整合了更多的api
   - 优化cd模式
-
 - 0.2.3   #2023-2-1
   - 修复文本末多出的空行
   -  修复readme中的错误
