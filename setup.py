@@ -5,8 +5,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="nonebot_plugin_dog",
-    version="0.2.8",
-    author="schwarzwald",
+    version="0.2.9",
+    author="Reversedeer",
     description="Lick the dog diary! Lick the dog and lick to the last nothing.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -16,7 +16,7 @@ setuptools.setup(
     },
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
     packages=setuptools.find_packages(),
@@ -24,5 +24,6 @@ setuptools.setup(
     install_requires = [
         'httpx>=0.23.0',
         'nonebot2>=2.0.0rc1',
+        'poetry>=1.5.0'
     ]
 )
