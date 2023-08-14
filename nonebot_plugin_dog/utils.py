@@ -8,7 +8,7 @@ dog_CD_dir = {}  # 记录舔狗日记cd的字典
 laugh_CD_dir = {}  # 记录讲个笑话cd的字典
 hitokoto_CD_dir = {}  # 记录一言cd的字典
 wenan_CD_dir = {}  # 记录文案cd的字典
-current_version = '0.2.8'
+current_version = '0.2.9'
 
 
 if os.path.exists("data/dog/groupdata.json"):  # 读取用户数据
