@@ -18,7 +18,8 @@ latest_tar_gz = config_path / "latest_file.tar.gz"
 temp_dir = config_path / "temp"
 backup_dir = config_path / "backup"
 version_file = config_path / "new_version"
-destination_directory = 'src/plugins/nonebot_plugin_dog'  # 目标文件夹
+# 目标文件夹
+destination_directory = 'src/plugins/nonebot_plugin_dog'  
 
 @driver.on_bot_connect
 async def remind(bot: Bot):
