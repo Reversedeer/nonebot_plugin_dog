@@ -259,7 +259,7 @@ with contextlib.suppress(Exception):
         supported_adapters={"onebot.v11"},
         extra={
             "author": "Reversedeer",
-            "version": "0.2.8",
+            "version": "0.2.9",
             "priority": 10,
         },
     )

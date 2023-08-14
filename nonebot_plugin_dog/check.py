@@ -101,17 +101,21 @@ async def _file_handle(latest_version: str) -> str:
     
     latest_file = Path(temp_dir) / os.listdir(temp_dir)[0]
     # 获取临时目录中的第一个文件，作为最新版本的文件夹路径
-    print(latest_file)
-    update_info_file = Path(latest_file) / os.listdir(latest_file)[0]
-    print(update_info_file)
+    update_info_file = Path(latest_file) / os.listdir(latest_file)[1]
     # 获取最新版本文件夹中的第二个文件，作为更新信息文件的路径
     try:
+
+        pycache_dir = os.path.join(destination_directory, '__pycache__')
+        if os.path.exists(pycache_dir):
+            shutil.rmtree(pycache_dir)
+
         for file in os.listdir(destination_directory):
-            logger.info("正在备份插件目录...")
-            temp_file = os.path.join(destination_directory, file)
-            backup_file = os.path.join(backup_dir, file)
-            shutil.copy2(temp_file, backup_file)
-            logger.info("文件备份成功")
+            if file != '__pycache__':
+                logger.info("正在备份插件目录...")
+                temp_file = os.path.join(destination_directory, file)
+                backup_file = os.path.join(backup_dir, file)
+                shutil.copy2(temp_file, backup_file)
+                logger.info("文件备份成功")
 
         
         for file in os.listdir(update_info_file):
