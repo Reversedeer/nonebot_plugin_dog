@@ -1,8 +1,9 @@
 <p align="center">
-  <a href="https://v2.nonebot.dev/store">
-    <img src="https://github.com/A-kirami/nonebot-plugin-template/blob/resources/nbp_logo.png" width="180" height="180" alt="NoneBotPluginLogo">
+  <a href="https://nonebot.dev">
+    <img src="https://nonebot.dev/logo.png" width="180" height="180" alt="NoneBot">
   </a>
 </p>
+
 
 
 
@@ -25,13 +26,7 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
     <img src="https://img.shields.io/badge/NoneBot2-blue?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAIVBMVEUAAAAAAAADAwMHBwceHh4UFBQNDQ0ZGRkoKCgvLy8iIiLWSdWYAAAAAXRSTlMAQObYZgAAAQVJREFUSMftlM0RgjAQhV+0ATYK6i1Xb+iMd0qgBEqgBEuwBOxU2QDKsjvojQPvkJ/ZL5sXkgWrFirK4MibYUdE3OR2nEpuKz1/q8CdNxNQgthZCXYVLjyoDQftaKuniHHWRnPh2GCUetR2/9HsMAXyUT4/3UHwtQT2AggSCGKeSAsFnxBIOuAggdh3AKTL7pDuCyABcMb0aQP7aM4AnAbc/wHwA5D2wDHTTe56gIIOUA/4YYV2e1sg713PXdZJAuncdZMAGkAukU9OAn40O849+0ornPwT93rphWF0mgAbauUrEOthlX8Zu7P5A6kZyKCJy75hhw1Mgr9RAUvX7A3csGqZegEdniCx30c3agAAAABJRU5ErkJggg==" alt="cqhttp">
   </a>
 </p>
-
-
-
-
-
-
-## 介绍
+## 介绍: 点点Star✨
 
 > 在群聊里发送“舔狗日记/一言”（等）命令时，bot返回一句舔狗日记/一言等文案
 >
@@ -45,7 +40,7 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 
 ## 安装方式
 
-### nb-cli安装(推荐)
+### nb-cli(推荐)
 
 ```
 nb plugin install nonebot_plugin_dog
@@ -53,10 +48,8 @@ nb plugin install nonebot_plugin_dog
 
 <details>
     <summary><h3>pip</h3></summary>
-
-
 ```
-pip install nonebot-plugin-dog
+pip install nonebot_plugin_dog
 ```
 
 </details>
@@ -67,7 +60,7 @@ pip install nonebot-plugin-dog
 pip install --upgrade nonebot-plugin-dog
 ```
 
-#### 还可以在群内发送指令："/检查更新"来检查更新;  发送  "/重启"完成bot更新
+#### 还可以在群内发送指令："/检查更新"来检查更新;  发送  "/重启"完成bot更新(推荐)
 
 ## 配置
 
@@ -82,18 +75,17 @@ pip install --upgrade nonebot-plugin-dog
 
 ## 示例
 
-<img width="300" src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/main/image/image.jpg">
+<img width="100%" src="https://github.com/Reversedeer/nonebot_piugin_dog/blob/dev/image/image.png">
 
-<img width="300 " src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/main/image/image2.jpg">
+<img width="100% " src="https://github.com/Reversedeer/nonebot_plugin_dog/blob/dev/image/image2.png">
 
 ## TODO
 
 - [x] 增加指令开关
-
+- [x] 增加插件热更新
 - [x] 增加CD限制
 - [ ] 增加图片发送
 - [x] 整合更多的API
-- [x] 修复文本末尾多出的空行[#issue1](https://github.com/Reversedeer/nonebot_plugin_dog/issues/1)
 
 <details>
     <summary><h2>更新日志</h2></summary>
