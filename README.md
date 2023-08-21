@@ -48,12 +48,11 @@ nb plugin install nonebot_plugin_dog
 
 <details>
     <summary><h3>pip</h3></summary>
-pip install nonebot-plugin-dog
+
 
 ```
 pip install nonebot-plugin-dog
 ```
-
 
 </details>
 
