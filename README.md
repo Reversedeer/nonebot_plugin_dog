@@ -7,6 +7,7 @@
 
 
 
+
 <div align="center">
 
 # nonebot-plugin-dog
@@ -16,16 +17,17 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 </div>
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/Mrs4s/go-cqhttp/master/LICENSE">
-    <img src="https://img.shields.io/github/license/Mrs4s/go-cqhttp" alt="license">
+  <a href="https://raw.githubusercontent.com/Reversedeer/nonebot_plugin_dog/main/LICENSE">
+    <img src="https://img.shields.io/github/license/Reversedeer/nonebot_plugin_dog" alt="license">
   </a>
   <a href="https://camo.githubusercontent.com/c5bfbde247cd10e93ff50a518b0f5e441a6e9959495f6bf0f1a1913d2b1b7a8d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e382b2d626c75652e737667">
-    <img src="https://img.shields.io/badge/python-3.8+-green.svg" alt="python">
+    <img src="https://img.shields.io/badge/python-3.8+-blue?logo=python&logoColor=edb641" alt="python">
   </a>
-  <a href="https://github.com/howmanybots/onebot/blob/master/README.md">
-    <img src="https://img.shields.io/badge/NoneBot2-blue?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAIVBMVEUAAAAAAAADAwMHBwceHh4UFBQNDQ0ZGRkoKCgvLy8iIiLWSdWYAAAAAXRSTlMAQObYZgAAAQVJREFUSMftlM0RgjAQhV+0ATYK6i1Xb+iMd0qgBEqgBEuwBOxU2QDKsjvojQPvkJ/ZL5sXkgWrFirK4MibYUdE3OR2nEpuKz1/q8CdNxNQgthZCXYVLjyoDQftaKuniHHWRnPh2GCUetR2/9HsMAXyUT4/3UHwtQT2AggSCGKeSAsFnxBIOuAggdh3AKTL7pDuCyABcMb0aQP7aM4AnAbc/wHwA5D2wDHTTe56gIIOUA/4YYV2e1sg713PXdZJAuncdZMAGkAukU9OAn40O849+0ornPwT93rphWF0mgAbauUrEOthlX8Zu7P5A6kZyKCJy75hhw1Mgr9RAUvX7A3csGqZegEdniCx30c3agAAAABJRU5ErkJggg==" alt="cqhttp">
+  <a href="https://github.com/nonebot/nonebot2">
+    <img src="https://img.shields.io/badge/nonebot-2+-red.svg">
   </a>
 </p>
+
 ## 介绍: 点点Star✨
 
 > 在群聊里发送“舔狗日记/一言”（等）命令时，bot返回一句舔狗日记/一言等文案
@@ -36,7 +38,7 @@ _✨随机返回一句舔狗日记...(~~舔狗，舔到最后一无所有~~)✨_
 >
 > 插件所有配置文件和备份目录在/date/dog/下
 >
-> ⚠️插件支持手动检查更新：Command: "/检查更新"，如果没有报错，发送: "/重启"完成bot更新，可不再使用pip install --upgrade 更新
+> ⚠️插件支持手动检查更新：Command: "/检查更新"，如果没有报错，发送: "/重启"完成bot更新，可不使用pip install --upgrade 更新
 
 ## 安装方式
 
@@ -91,10 +93,15 @@ pip install --upgrade nonebot-plugin-dog
 <details>
     <summary><h2>更新日志</h2></summary>
 
+- 0.3.0
+  
+  - 适配插件元数据
+  
+  - 优化代码
+  
 - 0.2.9
-  
   - 修复热更新bug
-  
+
 - 0.2.8
   - 实现插件热更新
 
