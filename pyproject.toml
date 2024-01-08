@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nonebot-plugin-dog"
-version = "0.2.9"
+version = "0.3.0"
 description = "随机返回一句舔狗日记...嘤嘤嘤"
 license = "MIT"
 authors = ["Reversedeer"]
