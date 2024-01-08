@@ -18,7 +18,7 @@ class Config:
     version_file = config_path / "new_version"
     destination_directory = 'src/plugins/nonebot_plugin_dog'  # 目标文件夹
     driver = nonebot.get_driver()
-
+    
     @staticmethod
     @driver.on_bot_connect
     async def remind(bot: Bot):
@@ -34,7 +34,7 @@ class Config:
                             "pid=${pid%/*}\n"
                             "kill -9 $pid\n"
                             "sleep 3\n"
-                            "python3 bot.py"
+                            "nb run"
                         )
                     )
                 os.system("chmod +x ./restart.sh")
